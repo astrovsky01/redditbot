@@ -19,7 +19,7 @@ r = praw.Reddit(client_id="8mXH89yv1LFRsw", client_secret=secret,
 keyphrase = "galaxy"
 
 #Comment response
-response_string = "**[Galaxy bot]** Galaxy is an open, web-based platform for accessible, reproducible, and transparent computational biomedical research. If you have any questions, visit the project home (https://galaxyproject.org) or our come talk to us on our Gitter channel (https://gitter.im/galaxyproject/Lobby)."
+response_string = "**[Galaxy bot]** Galaxy is an open, web-based platform for accessible, reproducible, and transparent computational biomedical research. If you have any questions, visit the project home (https://galaxyproject.org) or come talk to us on our Gitter channel (https://gitter.im/galaxyproject/Lobby)."
 
 for n in subs:
     #monitored subreddit. Request permissions from mods to add in additional ones.
