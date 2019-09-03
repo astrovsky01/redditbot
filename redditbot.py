@@ -5,13 +5,13 @@ import praw
 parser = argparse.ArgumentParser(description='Monitor subreddits for galaxy.')
 parser.add_argument("--subreddit", nargs="*", help="Specify which subreddits to monitor")
 parser.add_argument("--password", help="Password")
-parser.add_argument("--secret" help="Secret")
+parser.add_argument("--secret", help="Secret")
 args = parser.parse_args()
 subs = args.subreddit
 Password = args.password
 secret = args.secret
 #reddit api login
-r = praw.Reddit(client_id="zXULpqlTt7u5iw", client_secret=secret,
+r = praw.Reddit(client_id="8mXH89yv1LFRsw", client_secret=secret,
                username="galaxyprojectbot", password=Password,
                user_agent="galaxyprojectbot from the Galaxy Project")
 
