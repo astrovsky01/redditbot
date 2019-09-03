@@ -1,2 +1,2 @@
 # redditbot
-Reddit bot for Galaxyproject to redirect people mentioning Galaxy in posts to gitter/hub.
+Bot created to read through r/bioinformatics and other subreddits to find mention of Galaxy and redirect to a more-monitored location
