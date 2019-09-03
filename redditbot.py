@@ -44,12 +44,14 @@ for n in subs:
         #Found reference to Galaxy in post title
         if (keyphrase in submission.title or keyphrase.title() in submission.title) and (submission.author != "galaxyprojectbot"):
             if ("galaxyprojectbot" not in commentors) and ("galaxyprojectbot" not in c_on_c):
+                print("Galaxy mentioned in post title, commented on main post.")
                 submission.upvote()
                 submission.reply(response_string)
                 #print("Due to title, upvoted and responded to " + submission.title)
         #Found reference to Galaxy in post body
         elif (keyphrase in submission.selftext or keyphrase.title() in submission.selftext) and (submission.author != "galaxyprojectbot"):
             if ("galaxyprojectbot" not in commentors) and ("galaxyprojectbot" not in c_on_c):
+                print("Galaxy mentioned in post body, commented on main post.")
                 submission.upvote()
                 submission.reply(response_string)
                 #print("Due to submission body, upvoted and responded to " + submission.title)
@@ -57,6 +59,7 @@ for n in subs:
         elif ("galaxyprojectbot" not in commentors) and ("galaxyprojectbot" not in c_on_c):
             for x in comments:
                 if (already_commented == False) and ("galaxyprojectbot" not in commentors) and ("galaxyprojectbot" not in c_on_c):
+                    print("Galaxy mentioned in post comments, commented on comment.")
                     x.upvote()
                     x.reply(response_string)
                     already_commented = True
