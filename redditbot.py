@@ -19,7 +19,7 @@ r = praw.Reddit(client_id="8mXH89yv1LFRsw", client_secret=secret,
 keyphrase = "galaxy"
 
 #Comment response
-response_string = "**[Galaxy bot]** Galaxy is an open, web-based platform for accessible, reproducible, and transparent computational biomedical research. If you have any questions, visit [our website](https://galaxyproject.org) or our [Gitter channel](https://gitter.im/galaxyproject/Lobby)."
+response_string = "**[Galaxy bot]** Galaxy is an open, web-based platform for accessible, reproducible, and transparent computational biomedical research. If you have any questions, visit the project home (https://galaxyproject.org) or our come talk to us on our Gitter channel (https://gitter.im/galaxyproject/Lobby)."
 
 for n in subs:
     #monitored subreddit. Request permissions from mods to add in additional ones.
@@ -44,14 +44,14 @@ for n in subs:
         #Found reference to Galaxy in post title
         if (keyphrase in submission.title or keyphrase.title() in submission.title) and (submission.author != "galaxyprojectbot"):
             if ("galaxyprojectbot" not in commentors) and ("galaxyprojectbot" not in c_on_c):
-                print("Galaxy mentioned in post title, commented on main post.")
+                print("Post\t" + str(subreddit), "\t", str(submission.url))
                 submission.upvote()
                 submission.reply(response_string)
                 #print("Due to title, upvoted and responded to " + submission.title)
         #Found reference to Galaxy in post body
         elif (keyphrase in submission.selftext or keyphrase.title() in submission.selftext) and (submission.author != "galaxyprojectbot"):
             if ("galaxyprojectbot" not in commentors) and ("galaxyprojectbot" not in c_on_c):
-                print("Galaxy mentioned in post body, commented on main post.")
+                print("Post\t" + str(subreddit), "\t", str(submission.url))
                 submission.upvote()
                 submission.reply(response_string)
                 #print("Due to submission body, upvoted and responded to " + submission.title)
@@ -59,11 +59,12 @@ for n in subs:
         elif ("galaxyprojectbot" not in commentors) and ("galaxyprojectbot" not in c_on_c):
             for x in comments:
                 if (already_commented == False) and ("galaxyprojectbot" not in commentors) and ("galaxyprojectbot" not in c_on_c):
-                    print("Galaxy mentioned in post comments, commented on comment.")
-                    x.upvote()
-                    x.reply(response_string)
-                    already_commented = True
-                    #print("Due to submission comments, upvoted and responded to " + submission.title)
-                    continue
+                    if (keyphrase in x.body or keyphrase.title() in x.body) and (submission.author != "galaxyprojectbot"):
+                        print("Comment\t" + str(subreddit), "\t", str(submission.url))
+                        x.upvote()
+                        x.reply(response_string)
+                        already_commented = True
+                        #print("Due to submission comments, upvoted and responded to " + submission.title)
+                        continue
         if count >= 20:
             break
